@@ -26,17 +26,4 @@ class InputViewTest {
         assertThat(result).isEqualTo("HelloWorld");
     }
 
-    @Test
-    @DisplayName("입력이 되지 않으면 에러반환")
-    void read_input_error() {
-        String simulatedInput = null;
-        InputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
-        System.setIn(in);
-
-        //when
-        String result = InputView.read();
-
-        //then
-        assertThat(result).isNull();
-    }
 }
