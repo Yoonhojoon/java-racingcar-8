@@ -17,4 +17,17 @@ public class InputParser {
 
         return new RacingCarNames(trimmedNames);
     }
+
+    public AttemptCount parseAttemptCount(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("시도 횟수 입력값이 null이거나 비어있습니다.");
+        }
+
+        try {
+            int count = Integer.parseInt(input.trim());
+            return new AttemptCount(count);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
+    }
 }
