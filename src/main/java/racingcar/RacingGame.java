@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import io.inputview.AttemptCount;
-import io.outputview.OutputView;
 
 public class RacingGame {
     private static final int RANDOM_MIN = 0;
@@ -27,21 +26,27 @@ public class RacingGame {
     public void start() {
         while (!isFinished()) {
             executeRound();
-            printCurrentResults();
+            currentAttempt++;
+        }
+    }
+    
+    public void startWithCallback(Runnable afterEachRound) {
+        while (!isFinished()) {
+            executeRound();
+            afterEachRound.run();
             currentAttempt++;
         }
     }
 
-    private void printCurrentResults() {
-        List<RacingResult> results = getResults();
-        OutputView.printRacingResults(results);
-    }
-
-    private void executeRound() {
+    public void executeRound() {
         for (Car car : cars) {
             int randomValue = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
             car.move(moveRule, randomValue);
         }
+    }
+    
+    public void incrementAttempt() {
+        currentAttempt++;
     }
 
     public List<RacingResult> getResults() {

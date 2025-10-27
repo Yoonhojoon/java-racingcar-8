@@ -1,10 +1,13 @@
 package racingcar;
 
+import java.util.List;
+
 import io.inputview.AttemptCount;
 import io.inputview.InputParser;
 import io.inputview.InputView;
 import io.inputview.RacingCarNames;
 import io.outputview.OutputView;
+import racingcar.RacingResult;
 
 public class RacingController {
     private final InputParser inputParser;
@@ -40,7 +43,13 @@ public class RacingController {
     private void startRacing(RacingGame racingGame) {
         System.out.println();
         System.out.println("실행 결과");
-        racingGame.start();
+        
+        racingGame.startWithCallback(() -> printCurrentResults(racingGame));
+    }
+    
+    private void printCurrentResults(RacingGame racingGame) {
+        List<RacingResult> results = racingGame.getResults();
+        OutputView.printRacingResults(results);
     }
 
     private void showWinners(RacingGame racingGame) {
