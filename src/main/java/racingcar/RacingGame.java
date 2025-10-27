@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import io.inputview.AttemptCount;
 
 public class RacingGame {
-    private static final int RANDOM_MIN = 0;
-    private static final int RANDOM_MAX = 9;
     
     private final List<Car> cars;
     private final AttemptCount attemptCount;
@@ -40,8 +37,7 @@ public class RacingGame {
 
     public void executeRound() {
         for (Car car : cars) {
-            int randomValue = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
-            car.move(moveRule, randomValue);
+            moveRule.moveCar(car);
         }
     }
     

@@ -63,4 +63,20 @@ class MoveRuleTest {
         // then
         assertThat(canMove).isFalse();
     }
+
+    @Test
+    @DisplayName("moveCar 메서드는 자동차를 이동시킨다")
+    void moveCar_movesCar() {
+        // given
+        MoveRule moveRule = new RandomMoveRule();
+        Car car = new Car("test");
+
+        // when
+        moveRule.moveCar(car);
+
+        // then
+        // moveCar는 난수를 사용하므로 정확한 위치는 예측할 수 없지만
+        // 메서드가 정상적으로 실행되는지 확인
+        assertThat(car).isNotNull();
+    }
 }

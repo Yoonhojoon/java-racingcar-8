@@ -7,7 +7,6 @@ import io.inputview.InputParser;
 import io.inputview.InputView;
 import io.inputview.RacingCarNames;
 import io.outputview.OutputView;
-import racingcar.RacingResult;
 
 public class RacingController {
     private final InputParser inputParser;
