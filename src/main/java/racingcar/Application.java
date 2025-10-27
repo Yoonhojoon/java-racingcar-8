@@ -7,9 +7,10 @@ public class Application {
         try {
             InputParser inputParser = new InputParser();
             MoveRule moveRule = new RandomMoveRule();
-            RacingService racingService = new RacingService(inputParser, moveRule);
+            RacingService racingService = new RacingService(moveRule);
+            RacingController racingController = new RacingController(inputParser, racingService);
             
-            racingService.run();
+            racingController.run();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw e;
