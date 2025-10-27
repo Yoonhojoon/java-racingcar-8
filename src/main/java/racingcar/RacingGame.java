@@ -45,14 +45,12 @@ public class RacingGame {
         currentAttempt++;
     }
 
-    public List<RacingResult> getResults() {
-        return cars.stream()
-                .map(car -> new RacingResult(car.getName(), car.getPosition()))
-                .collect(Collectors.toList());
+    public List<Car> getResults() {
+        return List.copyOf(cars);
     }
 
     public List<String> getWinners() {
-        List<RacingResult> results = getResults();
+        List<Car> results = getResults();
         return WinnerCalculator.findWinners(results);
     }
 

@@ -54,12 +54,12 @@ class RacingGameTest {
 
         // when
         racingGame.start();
-        List<RacingResult> results = racingGame.getResults();
+        List<Car> results = racingGame.getResults();
 
         // then
         assertThat(results).hasSize(2);
-        assertThat(results.get(0).getCarName()).isEqualTo("pobi");
-        assertThat(results.get(1).getCarName()).isEqualTo("woni");
+        assertThat(results.get(0).getName()).isEqualTo("pobi");
+        assertThat(results.get(1).getName()).isEqualTo("woni");
     }
 
     @Test

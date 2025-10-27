@@ -7,6 +7,7 @@ import io.inputview.InputParser;
 import io.inputview.InputView;
 import io.inputview.RacingCarNames;
 import io.outputview.OutputView;
+import racingcar.Car;
 
 public class RacingController {
     private final InputParser inputParser;
@@ -46,8 +47,8 @@ public class RacingController {
     }
     
     private void printCurrentResults(RacingGame racingGame) {
-        List<RacingResult> results = racingGame.getResults();
-        OutputView.printRacingResults(results);
+        List<Car> cars = racingGame.getResults();
+        OutputView.printRacingResults(cars);
     }
 
     private void showWinners(RacingGame racingGame) {

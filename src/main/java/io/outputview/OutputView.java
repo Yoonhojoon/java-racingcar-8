@@ -3,7 +3,7 @@ package io.outputview;
 import java.util.List;
 import java.util.StringJoiner;
 
-import racingcar.RacingResult;
+import racingcar.Car;
 
 public class OutputView {
 
@@ -25,9 +25,9 @@ public class OutputView {
         System.out.print(carName + " : " + dashes + "\n");
     }
 
-    public static void printRacingResults(List<RacingResult> results) {
-        for (RacingResult result : results) {
-            printCarPosition(result.getCarName(), result.getPosition());
+    public static void printRacingResults(List<Car> cars) {
+        for (Car car : cars) {
+            printCarPosition(car.getName(), car.getPosition());
         }
         System.out.print("\n");
     }

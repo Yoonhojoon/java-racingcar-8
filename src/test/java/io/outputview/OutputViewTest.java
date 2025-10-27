@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racingcar.RacingResult;
+import racingcar.Car;
 
 class OutputViewTest {
 
@@ -56,16 +56,16 @@ class OutputViewTest {
     @DisplayName("경주 결과를 출력할 수 있다")
     void printRacingResults() {
         // given
-        List<RacingResult> results = List.of(
-                new RacingResult("pobi", 3),
-                new RacingResult("woni", 2)
+        List<Car> cars = List.of(
+                createCarWithPosition("pobi", 3),
+                createCarWithPosition("woni", 2)
         );
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
         try {
             // when
-            OutputView.printRacingResults(results);
+            OutputView.printRacingResults(cars);
 
             // then
             String expected = "pobi : ---\nwoni : --\n\n";
@@ -73,6 +73,15 @@ class OutputViewTest {
         } finally {
             System.setOut(System.out);
         }
+    }
+
+    private Car createCarWithPosition(String name, int position) {
+        Car car = new Car(name);
+        // position만큼 이동시키기 위해 여러 번 move 호출
+        for (int i = 0; i < position; i++) {
+            car.move(new racingcar.RandomMoveRule(), 5); // 5는 항상 이동
+        }
+        return car;
     }
 
     @Test
