@@ -1,7 +1,18 @@
 package racingcar;
 
+import io.inputview.InputParser;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            InputParser inputParser = new InputParser();
+            MoveRule moveRule = new RandomMoveRule();
+            RacingService racingService = new RacingService(inputParser, moveRule);
+            
+            racingService.run();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw e;
+        }
     }
 }
