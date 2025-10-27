@@ -29,20 +29,19 @@ public class RacingController {
     }
 
     private RacingCarNames getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        OutputView.printCarNamePrompt();
         String input = InputView.read();
         return inputParser.parseCarNames(input);
     }
 
     private AttemptCount getAttemptCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        OutputView.printAttemptCountPrompt();
         String input = InputView.read();
         return inputParser.parseAttemptCount(input);
     }
 
     private void startRacing(RacingGame racingGame) {
-        System.out.println();
-        System.out.println("실행 결과");
+        OutputView.printRacingStartMessage();
         
         racingGame.startWithCallback(() -> printCurrentResults(racingGame));
     }
